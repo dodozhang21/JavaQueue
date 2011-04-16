@@ -9,11 +9,13 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @ContextConfiguration(locations={"/TestContext.xml"})
 @Transactional
@@ -21,6 +23,10 @@ import java.util.Date;
 public class JobQueueRunnerTest {
     @Autowired
     private GenericDaoImpl<Job> jobDao;
+
+    @Autowired
+    @Qualifier("deleteJobQueue")
+    private LinkedBlockingQueue<Job> deleteJobQueue;
 
 //    @Autowired
 //    private static TestLogger log;
@@ -33,6 +39,7 @@ public class JobQueueRunnerTest {
 
             Thread.sleep(1000);
         }
+        System.out.println(jobDao.getAll().size());
     }
 
 //    @AfterClass

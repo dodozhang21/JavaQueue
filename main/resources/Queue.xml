@@ -9,9 +9,14 @@
     <context:component-scan base-package="net.pureessence.example.service"/>
 
     <bean id="jobQueue" class="java.util.concurrent.LinkedBlockingQueue"/>
+    <bean id="deleteJobQueue" class="java.util.concurrent.LinkedBlockingQueue"/>
 
     <bean id="jobQueueThread" class="java.lang.Thread" init-method="start">
         <constructor-arg ref="jobQueueRunner"/>
+    </bean>
+
+    <bean id="deleteJobQueueThread" class="java.lang.Thread" init-method="start">
+        <constructor-arg ref="deleteJobQueueRunner"/>
     </bean>
 
     <bean id="log" class="org.apache.commons.logging.LogFactory" factory-method="getLog">
