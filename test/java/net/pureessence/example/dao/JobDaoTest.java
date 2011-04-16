@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -22,15 +23,18 @@ public class JobDaoTest {
     @Autowired
     private GenericDaoImpl<Job> jobDao;
 
+    // http://stackoverflow.com/questions/1939229/how-to-create-background-process-in-spring-webapp
+    @Autowired
+    private LinkedBlockingQueue<Job> jobQueue;
+
     @Test
-    public void testSaveFindDelete() {
+    public void testSaveFindDelete() throws InterruptedException {
         Job job = new Job();
         job.setJobName("myJob");
         job.setJobDescription("my job");
         job.setRequestTime(new Date());
 
         jobDao.save(job);
-
         List<Job> results = jobDao.getAll();
         assertEquals(1, results.size());
 
