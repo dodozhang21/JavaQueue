@@ -10,8 +10,12 @@
 
     <bean id="jobQueue" class="java.util.concurrent.LinkedBlockingQueue"/>
 
-    <bean id="thingyThread" class="java.lang.Thread" init-method="start">
+    <bean id="jobQueueThread" class="java.lang.Thread" init-method="start">
         <constructor-arg ref="jobQueueRunner"/>
+    </bean>
+
+    <bean id="log" class="org.apache.commons.logging.LogFactory" factory-method="getLog">
+        <constructor-arg value="mylog"/>
     </bean>
 
 </beans>
