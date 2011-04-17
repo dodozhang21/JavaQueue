@@ -1,3 +1,4 @@
 target/
 test-db/
 logs/
+spy.log

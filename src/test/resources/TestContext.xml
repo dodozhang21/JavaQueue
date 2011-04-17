@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <import resource="classpath:Queue.xml"/>
+    <import resource="classpath:Repository.xml"/>
+
+    <!--<bean id="log" class="net.pureessence.example.TestLogger" />-->
+
+    <!-- Override the default datasource with this test database -->
+	<bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">
+        <constructor-arg>
+            <ref local="testDataSource"/>
+        </constructor-arg>
+    </bean>
+
+	<bean id="testDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:test-db/javaQueue"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+
+    <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
