@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
@@ -27,8 +28,8 @@ public class DeleteJobQueueRunner implements Runnable {
                 Job job = deleteJobQueue.take();
                 job = jobDao.getById(job.getId());
                 jobDao.delete(job);
-                log.info(String.format("delete job id '%s'", job.getId()));
-                Thread.sleep(1500);
+                log.info(String.format("delete job id '%s' at %s", job.getId(), new Date()));
+
             } catch (InterruptedException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }

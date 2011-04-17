@@ -1,6 +1,7 @@
 package net.pureessence.example.service;
 
 
+import net.pureessence.example.TestLogger;
 import net.pureessence.example.dao.GenericDaoImpl;
 import net.pureessence.example.domain.Job;
 import org.junit.Ignore;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import static junit.framework.Assert.assertEquals;
@@ -36,10 +38,106 @@ public class JobQueueRunnerTest {
     @Qualifier("deleteJobQueue")
     private LinkedBlockingQueue<Job> deleteJobQueue;
 
-//    @Autowired
-//    private static TestLogger log;
+    @Autowired
+    private TestLogger log;
 
     @Test
+    @Rollback(false)
+    public void testJob1() {
+        Job job = job("1");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob2() {
+        Job job = job("2");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob3() {
+        Job job = job("3");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob4() {
+        Job job = job("4");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob5() {
+        Job job = job("5");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob5Log() throws InterruptedException {
+        Thread.sleep(1000);
+        for (String infoMessage : log.getInfoMessages()) {
+            System.out.println("infoMessage = " + infoMessage);
+        }
+
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 1'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 2'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 3'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 4'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 5'"));
+
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '1'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '2'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '3'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '4'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '5'"));
+
+        assertTrue(jobDao.getAll().isEmpty());
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob7() {
+        Job job = job("7");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob8() {
+        Job job = job("8");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob9() {
+        Job job = job("9");
+        jobDao.save(job);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testJob9Log() throws InterruptedException {
+        Thread.sleep(1000);
+        for (String infoMessage : log.getInfoMessages()) {
+            System.out.println("infoMessage = " + infoMessage);
+        }
+
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 7'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "insert jobName 'job 8'"));
+
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '7'"));
+        assertTrue(containsStringStartWith(log.getInfoMessages(), "delete job id '8'"));
+
+        assertTrue(jobDao.getAll().isEmpty());
+    }
+
+    @Ignore
     @Rollback(false)
     public void testA() throws InterruptedException {
         for (int i = 0; i < 5; i++) {
@@ -48,27 +146,16 @@ public class JobQueueRunnerTest {
 
             Thread.sleep(1000);
         }
-//        assertEquals(1, jobQueue.size());
     }
 
-    @Ignore
-    @Rollback(false)
-    public void testQueue() throws InterruptedException {
-        for (int i = 0; i < 5; i++) {
-            Job job = job("job " + i, "job " + i + " desc");
-            jobDao.save(job);
-
-            Thread.sleep(1000);
+    private static boolean containsStringStartWith(List<String> messages, String message) {
+        for (String s : messages) {
+            if(s.startsWith(message)) {
+                return true;
+            }
         }
-        System.out.println(jobDao.getAll().size());
+        return false;
     }
-
-//    @AfterClass
-//    public static void testLog() {
-//        for(String infoMessage : log.getInfoMessages()) {
-//            System.out.println(infoMessage);
-//        }
-//    }
 
     private static Job job(String prefix) {
         return job("job " + prefix, "job " + prefix + " desc");

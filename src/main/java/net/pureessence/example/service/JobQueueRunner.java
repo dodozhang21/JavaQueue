@@ -30,7 +30,7 @@ public class JobQueueRunner implements Runnable {
         try {
             while (true) {
                 Job job = jobQueue.take();
-                log.info(String.format("jobName '%s', jobDescription '%s', requestTime '%s'", job.getJobName(), job.getJobDescription(), job.getRequestTime()));
+                log.info(String.format("insert jobName '%s', jobDescription '%s', requestTime '%s'", job.getJobName(), job.getJobDescription(), job.getRequestTime()));
 //                System.out.println(String.format("jobName '%s', jobDescription '%s', requestTime '%s'", job.getJobName(), job.getJobDescription(), job.getRequestTime()));
 //                job = jobDao.getById(job.getId());
 //                jobDao.delete(job);
