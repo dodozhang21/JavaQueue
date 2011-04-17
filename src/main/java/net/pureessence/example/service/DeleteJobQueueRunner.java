@@ -28,6 +28,7 @@ public class DeleteJobQueueRunner implements Runnable {
                 job = jobDao.getById(job.getId());
                 jobDao.delete(job);
                 log.info(String.format("delete job id '%s'", job.getId()));
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }

@@ -19,21 +19,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/dao/PostInsertListener.java" line="17" class="net.pureessence.example.dao.PostInsertListener" package="net.pureessence.example.dao">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -74,11 +59,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JobQueueRunnerTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="JobQueueRunnerTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/net/pureessence/example/service/JobQueueRunnerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="79" selection-start="280" selection-end="280" vertical-scroll-proportion="0.030797102">
-              <folding />
+            <state line="40" column="1" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostInsertListener.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PostInsertListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/dao/PostInsertListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
+            <state line="10" column="78" selection-start="418" selection-end="418" vertical-scroll-proportion="0.307971">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,7 +102,7 @@
       <file leaf-file-name="DeleteJobQueueRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/service/DeleteJobQueueRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="36" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
+            <state line="30" column="33" selection-start="968" selection-end="968" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -180,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/java/net/pureessence/example/domain/Job.java" />
         <option value="$PROJECT_DIR$/main/resources/Job.hbm.xml" />
         <option value="$PROJECT_DIR$/main/java/net/pureessence/example/dao/PostInsertListener.java" />
         <option value="$PROJECT_DIR$/test/java/net/pureessence/example/dao/JobDaoTest.java" />
@@ -194,8 +180,9 @@
         <option value="$PROJECT_DIR$/main/resources/Repository.xml" />
         <option value="$PROJECT_DIR$/test/java/net/pureessence/example/service/JobQueueRunnerTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/import.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/net/pureessence/example/service/DeleteJobQueueRunner.java" />
         <option value="$PROJECT_DIR$/src/test/java/net/pureessence/example/service/JobQueueRunnerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/pureessence/example/service/DeleteJobQueueRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/pureessence/example/dao/PostInsertListener.java" />
       </list>
     </option>
   </component>
@@ -873,15 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/dao/PostInsertListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/service/JobQueueRunner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
@@ -898,15 +876,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/service/DeleteJobQueueRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="36" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
+        <state line="30" column="33" selection-start="968" selection-end="968" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/net/pureessence/example/service/JobQueueRunnerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="79" selection-start="280" selection-end="280" vertical-scroll-proportion="0.030797102">
-          <folding />
+        <state line="40" column="1" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/pureessence/example/dao/PostInsertListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="78" selection-start="418" selection-end="418" vertical-scroll-proportion="0.307971">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

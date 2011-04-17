@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
+// be aware http://opensource.atlassian.com/projects/hibernate/browse/HHH-1582
 @Component
 public class PostInsertListener implements PostInsertEventListener {
     @Autowired
