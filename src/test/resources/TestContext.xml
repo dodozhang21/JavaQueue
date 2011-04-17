@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <import resource="classpath:Queue.xml"/>
     <import resource="classpath:Repository.xml"/>
 
     <bean id="log" class="net.pureessence.example.TestLogger" />

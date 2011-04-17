@@ -1,6 +1,5 @@
 package net.pureessence.example.service;
 
-
 import net.pureessence.example.TestLogger;
 import net.pureessence.example.dao.GenericDaoImpl;
 import net.pureessence.example.domain.Job;
@@ -14,29 +13,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 @ContextConfiguration(locations = {"/QueueTwo.xml", "/TestContext.xml"})
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-public class JobQueueRunnerTest {
+public class JobQueueSingleRunnerTest {
     @Autowired
     private GenericDaoImpl<Job> jobDao;
 
     @Autowired
     @Qualifier("jobQueue")
     private LinkedBlockingQueue<Job> jobQueue;
-
-    @Autowired
-    @Qualifier("deleteJobQueue")
-    private LinkedBlockingQueue<Job> deleteJobQueue;
 
     @Autowired
     private TestLogger log;
@@ -136,7 +129,7 @@ public class JobQueueRunnerTest {
 
         assertTrue(jobDao.getAll().isEmpty());
 
-        assertEquals(0, deleteJobQueue.size());
+        assertEquals(0, jobQueue.size());
     }
 
     @Ignore
@@ -151,7 +144,7 @@ public class JobQueueRunnerTest {
 
         assertTrue(jobDao.getAll().isEmpty());
 
-        assertEquals(0, deleteJobQueue.size());
+        assertEquals(0, jobQueue.size());
     }
 
     private static boolean containsStringStartWith(List<String> messages, String message) {
